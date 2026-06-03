@@ -11,9 +11,9 @@
   --cor-header: #ffffff;
   --cor-card: #ffffff;
   --cor-borda: #e0e0e0;
-  --cor-primaria: #6c63ff;
-  --cor-primaria-hover: #5a52e0;
-  --cor-hero-fundo: #f0f0ff;
+  --cor-primaria: #D93818;
+  --cor-primaria-hover: #C03014;
+  --cor-hero-fundo: #fdf0ed;
   --cor-footer: #1a1a2e;
   --cor-footer-texto: #cccccc;
 }
@@ -26,9 +26,9 @@
   --cor-header: #1a1a2e;
   --cor-card: #1a1a2e;
   --cor-borda: #2a2a3e;
-  --cor-primaria: #8b83ff;
-  --cor-primaria-hover: #a09aff;
-  --cor-hero-fundo: #16162a;
+  --cor-primaria: #E85A3A;
+  --cor-primaria-hover: #F06B4A;
+  --cor-hero-fundo: #1a0e0c;
   --cor-footer: #0a0a14;
   --cor-footer-texto: #8888aa;
 }
