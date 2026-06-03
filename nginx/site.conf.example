@@ -9,7 +9,7 @@ server {
     listen [::]:8080;
 
     # Nome do seu site (mude para seu domínio ou IP)
-    server_name 192.168.11.127;
+    server_name SEU_IP_AQUI;
 
     # Caminho onde estão os arquivos do site
     root /var/www/a-place-of-my-own;
