@@ -1,0 +1,397 @@
+/* ===== VARIÁVEIS GLOBAIS ===== */
+/* :root = raiz do documento. Variáveis CSS começam com -- */
+:root {
+  --fonte: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --max-width: 960px;
+  --transicao: 0.3s ease;
+
+  /* Cores do tema CLARO (light mode) */
+  --cor-fundo: #fafafa;
+  --cor-texto: #1a1a2e;
+  --cor-header: #ffffff;
+  --cor-card: #ffffff;
+  --cor-borda: #e0e0e0;
+  --cor-primaria: #6c63ff;
+  --cor-primaria-hover: #5a52e0;
+  --cor-hero-fundo: #f0f0ff;
+  --cor-footer: #1a1a2e;
+  --cor-footer-texto: #cccccc;
+}
+
+/* ===== TEMA ESCURO ===== */
+/* data-theme="dark" é um atributo que o JS coloca no <html> */
+[data-theme="dark"] {
+  --cor-fundo: #0f0f1a;
+  --cor-texto: #e0e0e0;
+  --cor-header: #1a1a2e;
+  --cor-card: #1a1a2e;
+  --cor-borda: #2a2a3e;
+  --cor-primaria: #8b83ff;
+  --cor-primaria-hover: #a09aff;
+  --cor-hero-fundo: #16162a;
+  --cor-footer: #0a0a14;
+  --cor-footer-texto: #8888aa;
+}
+
+/* ===== RESET BÁSICO ===== */
+/* Remove margens/paddings padrão que o navegador coloca */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* box-sizing: border-box faz width incluir padding e borda */
+}
+
+body {
+  font-family: var(--fonte);
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  line-height: 1.6;
+  /* line-height = espaçamento entre linhas */
+  transition: background var(--transicao), color var(--transicao);
+  /* transition = anima a mudança de cor quando troca de tema */
+}
+
+a {
+  color: var(--cor-primaria);
+  text-decoration: none;
+  /* tira o sublinhado padrão dos links */
+}
+
+a:hover {
+  color: var(--cor-primaria-hover);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ===== CONTAINER ===== */
+/* Centraliza o conteúdo e define largura máxima */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  /* margin: 0 auto = centraliza horizontalmente */
+  padding: 0 20px;
+}
+
+/* ===== HEADER ===== */
+header {
+  background: var(--cor-header);
+  border-bottom: 1px solid var(--cor-borda);
+  padding: 15px 0;
+  position: sticky;
+  /* sticky = gruda no topo ao rolar a página */
+  top: 0;
+  z-index: 100;
+  /* z-index = fica acima de outros elementos */
+  transition: background var(--transicao), border-color var(--transicao);
+}
+
+.header-flex {
+  display: flex;
+  /* flex = layout flexível, um ao lado do outro */
+  justify-content: space-between;
+  /* space-between = espaço entre os itens */
+  align-items: center;
+  /* alinha verticalmente ao centro */
+  flex-wrap: wrap;
+  /* wrap = se não couber, quebra pra linha de baixo */
+  gap: 10px;
+}
+
+.logo {
+  font-size: 1.3rem;
+  /* rem = relativo ao tamanho da fonte do root */
+  font-weight: 700;
+  /* bold */
+  color: var(--cor-texto);
+}
+
+.logo:hover {
+  color: var(--cor-primaria);
+}
+
+/* ===== MENU ===== */
+.menu {
+  list-style: none;
+  /* tira os bullets da lista */
+  display: flex;
+  gap: 20px;
+}
+
+.menu a {
+  color: var(--cor-texto);
+  padding: 5px 0;
+  border-bottom: 2px solid transparent;
+  /* borda invisível pra não pular quando aparecer */
+  transition: border-color var(--transicao), color var(--transicao);
+}
+
+.menu a:hover,
+.menu a.ativo {
+  color: var(--cor-primaria);
+  border-bottom-color: var(--cor-primaria);
+}
+
+/* ===== BOTÃO DE TEMA ===== */
+#toggle-tema {
+  background: none;
+  border: 1px solid var(--cor-borda);
+  border-radius: 50%;
+  /* border-radius deixa redondo */
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  /* cursor vira mãozinha */
+  transition: background var(--transicao), border-color var(--transicao);
+}
+
+#toggle-tema:hover {
+  background: var(--cor-borda);
+}
+
+/* ===== HERO (seção de destaque inicial) ===== */
+.hero {
+  background: var(--cor-hero-fundo);
+  padding: 80px 0;
+  text-align: center;
+  transition: background var(--transicao);
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 1.15rem;
+  max-width: 600px;
+  margin: 0 auto 25px;
+  color: var(--cor-texto);
+  opacity: 0.85;
+}
+
+/* ===== BOTÃO GENÉRICO ===== */
+.btn {
+  display: inline-block;
+  /* inline-block = fica na linha mas aceita padding */
+  background: var(--cor-primaria);
+  color: #ffffff;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background var(--transicao), transform var(--transicao);
+}
+
+.btn:hover {
+  background: var(--cor-primaria-hover);
+  color: #ffffff;
+  transform: translateY(-2px);
+  /* sobe 2px = efeito de levantar */
+}
+
+.btn-pequeno {
+  padding: 8px 18px;
+  font-size: 0.9rem;
+}
+
+/* ===== SEÇÃO DESTAQUES (cards na home) ===== */
+.destaques {
+  padding: 60px 0;
+}
+
+.destaques h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 1.8rem;
+}
+
+/* ===== CARDS ===== */
+.cards {
+  display: grid;
+  /* grid = layout em grade */
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  /* auto-fit = ajusta automaticamente o número de colunas */
+  /* minmax(260px, 1fr) = mínimo 260px, máximo 1 fração do espaço */
+  gap: 25px;
+}
+
+.card {
+  background: var(--cor-card);
+  border: 1px solid var(--cor-borda);
+  border-radius: 12px;
+  padding: 25px;
+  transition: transform var(--transicao), box-shadow var(--transicao),
+              background var(--transicao), border-color var(--transicao);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  /* box-shadow = sombra */
+}
+
+.card h3 {
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+}
+
+.card p {
+  margin-bottom: 15px;
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+/* ===== PÁGINAS INTERNAS ===== */
+.pagina {
+  padding: 60px 0;
+  min-height: 60vh;
+  /* 60vh = 60% da altura da tela (viewport height) */
+}
+
+.pagina h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.subtitulo {
+  font-size: 1.1rem;
+  opacity: 0.8;
+  margin-bottom: 35px;
+}
+
+/* ===== POST DO BLOG ===== */
+.post {
+  background: var(--cor-card);
+  border: 1px solid var(--cor-borda);
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 20px;
+  transition: background var(--transicao), border-color var(--transicao);
+}
+
+.post h2 {
+  font-size: 1.4rem;
+  margin-bottom: 5px;
+}
+
+.post-data {
+  font-size: 0.85rem;
+  opacity: 0.6;
+  margin-bottom: 12px;
+}
+
+.post-resumo {
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+}
+
+.post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* ===== TAG (categoria do post/projeto) ===== */
+.tag {
+  display: inline-block;
+  background: var(--cor-primaria);
+  color: #ffffff;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.carregando {
+  opacity: 0.6;
+  font-style: italic;
+}
+
+/* ===== CARD DE PROJETO ===== */
+.card-projeto .tag {
+  margin-top: 10px;
+  margin-right: 4px;
+}
+
+/* ===== SOBRE ===== */
+.sobre-flex {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.sobre-texto {
+  flex: 2;
+  /* ocupa 2 partes do espaço */
+}
+
+.sobre-texto p {
+  margin-bottom: 15px;
+}
+
+.sobre-imagem {
+  flex: 1;
+  /* ocupa 1 parte do espaço */
+}
+
+.placeholder-imagem {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  /* mantém proporção quadrada */
+  background: var(--cor-card);
+  border: 2px dashed var(--cor-borda);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.6;
+  font-size: 0.9rem;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: var(--cor-footer);
+  color: var(--cor-footer-texto);
+  text-align: center;
+  padding: 30px 0;
+  margin-top: 40px;
+  transition: background var(--transicao), color var(--transicao);
+}
+
+footer p {
+  font-size: 0.9rem;
+}
+
+/* ===== RESPONSIVIDADE (para celular) ===== */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero {
+    padding: 50px 0;
+  }
+
+  .header-flex {
+    flex-direction: column;
+    /* um abaixo do outro */
+    align-items: center;
+  }
+
+  .menu {
+    gap: 12px;
+  }
+
+  .sobre-flex {
+    flex-direction: column;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+    /* 1 coluna só no celular */
+  }
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "titulo": "Primeiro post — Por que criei este site",
+    "data": "2026-06-03",
+    "resumo": "Resolvi criar meu próprio espaço na internet para compartilhar ideias, aprendizados e projetos. Um lugar que é só meu.",
+    "tags": ["pessoal", "reflexão"],
+    "imagem": ""
+  },
+  {
+    "titulo": "Aprendendo CSS: Box Model",
+    "data": "2026-06-02",
+    "resumo": "Entendi como funciona o modelo de caixas do CSS: margin, border, padding e content. Parece simples mas faz toda a diferença.",
+    "tags": ["css", "estudo", "frontend"],
+    "imagem": ""
+  },
+  {
+    "titulo": "Montando meu primeiro servidor caseiro",
+    "data": "2026-05-28",
+    "resumo": "Comprei um Raspberry Pi 3B e instalei o CasaOS. Agora tenho meu próprio servidor rodando em casa 24/7.",
+    "tags": ["raspberry", "servidor", "casaos"],
+    "imagem": ""
+  }
+]
