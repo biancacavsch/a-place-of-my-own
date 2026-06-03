@@ -35,7 +35,32 @@ function alternarTema() {
 // 4. Quando clicar no botão, chama a função
 botaoTema.addEventListener("click", alternarTema);
 
+// ===== ANIMAÇÃO DE SCROLL (FADE-IN) =====
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visivel");
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
+
+// ===== EFEITO DE DIGITAÇÃO NO HERO =====
+const titulo = document.querySelector(".hero h1");
+if (titulo) {
+  const texto = titulo.textContent;
+  titulo.textContent = "";
+  const span = document.createElement("span");
+  span.textContent = texto;
+  titulo.appendChild(span);
+}
+
 // ===== DESTACAR LINK ATIVO NO MENU =====
-// O JS não precisa mais fazer isso porque colocamos class="ativo"
-// manualmente em cada página HTML.
-// Mas se quiséssemos fazer automático, seria com window.location.
+const links = document.querySelectorAll(".menu a");
+const caminho = window.location.pathname.split("/").pop() || "index.html";
+links.forEach(link => {
+  if (link.getAttribute("href") === caminho) {
+    link.classList.add("ativo");
+  }
+});

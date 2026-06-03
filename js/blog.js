@@ -1,6 +1,6 @@
 // ===== CARREGAR POSTS DO BLOG =====
 
-// async = função que pode esperar (await) algo que demora
+// async = função para aguardar funções demoradas
 async function carregarPosts() {
   const container = document.getElementById("lista-posts");
 
@@ -24,7 +24,7 @@ async function carregarPosts() {
 
     // Montar o HTML de cada post
     // map = transforma cada item da lista em HTML
-    // join("") = junta tudo numa string só (senão coloca vírgula)
+    // join("") = junta tudo numa string só
     const htmlPosts = posts.map(post => {
       // Criar as tags HTML
       const tagsHtml = post.tags
