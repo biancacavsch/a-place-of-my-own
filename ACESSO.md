@@ -122,6 +122,30 @@ docker exec pihole pihole reloaddns
 4. **Site fora do ar:** `cd /var/www/a-place-of-my-own && sudo git pull`
 5. **DNS quebrado:** `sudo systemctl restart unbound && docker exec pihole pihole reloaddns`
 
+## Testes de validação (junho 2026)
+
+Suite completa de testes via Tailscale executada em 05/06/2026:
+
+### DNS via Tailscale (100.66.151.93)
+- ✅ Domínios normais resolvem (github.com → 4.228.31.150)
+- ✅ Ads do Google bloqueados (doubleclick, googleadservices, googlesyndication → 0.0.0.0)
+- ✅ Ad networks bloqueados (adnxs, pubmatic, scorecardresearch, moatads → 0.0.0.0)
+- ✅ Trackers bloqueados (tiktok, hotjar → 0.0.0.0)
+- ✅ Cache DNS funcionando (queries repetidas retornam 3ms)
+- ✅ NXDOMAIN correto (domínios inexistentes)
+
+### Containers via Tailscale
+- ✅ Site: HTTP 200 (73ms primeira vez)
+- ✅ Blog: HTTP 200 (5ms)
+- ✅ Trilium: HTTP 302 (login, OK)
+- ✅ Pi-hole admin: HTTP 302 (login, OK)
+
+### Rede
+- ✅ Latência Tailscale: 3-9ms
+- ✅ 0% packet loss
+
+**Status: arquitetura 100% funcional.**
+
 ## Sobre domínio público (futuro)
 
 Quando quiser expor o site publicamente (compartilhar com outras pessoas), as opções são:
