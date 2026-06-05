@@ -26,6 +26,23 @@ if [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 
+# Achar nft (pode estar em /usr/sbin sem estar no PATH)
+if ! command -v nft &> /dev/null; then
+    for CANDIDATO in /usr/sbin/nft /sbin/nft /usr/local/sbin/nft; do
+        if [ -x "$CANDIDATO" ]; then
+            NFT="$CANDIDATO"
+            break
+        fi
+    done
+    if [ -z "$NFT" ]; then
+        echo -e "${VERMELHO}ERRO: nft não encontrado. Instale: sudo apt install nftables${NC}"
+        exit 1
+    fi
+    echo -e "${AMARELO}(nft em $NFT)${NC}"
+else
+    NFT="nft"
+fi
+
 # Verificar .env
 if [ ! -f "$ENV_FILE" ]; then
     echo -e "${VERMELHO}ERRO: $ENV_FILE não existe.${NC}"
@@ -48,19 +65,19 @@ echo -e "${AMARELO}→ Substituindo variáveis no template...${NC}"
 envsubst < "$TEMPLATE" > "$OUTPUT"
 
 echo -e "${AMARELO}→ Validando sintaxe...${NC}"
-if ! nft -c -f "$OUTPUT" 2>&1; then
+if ! $NFT -c -f "$OUTPUT" 2>&1; then
     echo -e "${VERMELHO}ERRO: sintaxe inválida!${NC}"
     echo "Arquivo gerado: $OUTPUT"
     exit 1
 fi
 
 echo -e "${AMARELO}→ Aplicando regras...${NC}"
-nft -f "$OUTPUT"
+$NFT -f "$OUTPUT"
 
 echo -e "${VERDE}✓ Firewall aplicado com sucesso!${NC}"
 echo ""
 echo "Regras ativas (primeiras 20):"
-nft list ruleset | head -20
+$NFT list ruleset | head -20
 echo "..."
 echo ""
 echo -e "${AMARELO}Comandos úteis:${NC}"
