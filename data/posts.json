@@ -1,23 +1,29 @@
 [
   {
-    "titulo": "Por quê?",
-    "data": "2026-06-03",
-    "resumo": "Decidi aprender como criar, auto-hospedar e gerenciar um site; o uso prático dele é questionável, mas sei que descubro no caminho.",
-    "tags": ["pessoal"],
-    "imagem": ""
+    "titulo": "Ensaio sobre a Cegueira — José Saramago",
+    "data": "2026-06-01",
+    "tags": ["resenha", "literatura", "Saramago"],
+    "capa": "📖",
+    "autor": "José Saramago",
+    "nota": "★★★★★",
+    "corpo": "<p>Ler Saramago é como aprender a enxergar de novo. <em>Ensaio sobre a Cegueira</em> começa com uma premissa aparentemente simples: de repente, as pessoas começam a ficar cegas. Mas não uma cegueira comum — uma cegueira branca, como se o mundo inteiro fosse submerso em leite.</p><p>O que torna este livro tão perturbador não é a cegueira em si, mas o que ela revela sobre os seres humanos quando as máscaras da civilização caem. Saramago desmonta, camada por camada, as convenções sociais que nos separam dos instintos mais primitivos.</p><blockquote>\"Dentro de nós há uma coisa que não tem nome, essa coisa é o que somos.\"</blockquote><p>Escrito em 1995, o livro parece mais atual do que nunca. A forma como as pessoas se organizam (ou se desorganizam) diante de uma crise coletiva é um espelho doloroso da nossa própria realidade. A fila para comida, a luta por recursos, a solidariedade que brota nos momentos mais escuros — e a crueldade que também emerge.</p><p>A personagem da mulher do médico, que permanece vidente em meio a um mundo de cegos, é uma das figuras mais comoventes da literatura. Ela vê tudo e não pode fazer nada além de testemunhar. É o leitor dentro do livro.</p><p>Não é uma leitura fácil. O estilo de Saramago — parágrafos longos, diálogos sem travessão, pontuação própria — exige entrega. Mas quem persiste é recompensado com uma das experiências literárias mais transformadoras que existem.</p><hr><p>Classificação pessoal: <strong>5/5</strong> — Um livro que todo mundo deveria ler pelo menos uma vez na vida.</p>"
   },
   {
-    "titulo": "Aprendendo CSS: Box Model",
-    "data": "2026-06-02",
-    "resumo": "Entendi como funciona o modelo de caixas do CSS: margin, border, padding e content. Parece simples mas faz toda a diferença.",
-    "tags": ["css", "estudo", "frontend"],
-    "imagem": ""
+    "titulo": "1984 — George Orwell",
+    "data": "2026-05-20",
+    "tags": ["resenha", "distopia", "clássico"],
+    "capa": "📗",
+    "autor": "George Orwell",
+    "nota": "★★★★☆",
+    "corpo": "<p>Li <em>1984</em> pela primeira vez aos 16 anos e lembro de ter ficado impressionada com o conceito do Big Brother. Reli agora, anos depois, e a experiência foi completamente diferente. O que antes parecia uma ficção distópica exagerada hoje soa quase como um manual de instruções sobre como <strong>não</strong> queremos que o mundo funcione.</p><p>Orwell escreveu o livro em 1949, imaginando um futuro onde o controle estatal é absoluto. A vigilância constante, a manipulação da história, a linguagem sendo podada para limitar o pensamento — cada elemento parece profético.</p><blockquote>\"O poder não é um meio, é um fim.\"</blockquote><p>O que mais me marcou nesta releitura foi a <strong>neolingua</strong>. A ideia de que, se você reduz o vocabulário, reduz também a capacidade de pensar certos pensamentos é assustadoramente genial. Quantas palavras perdemos nos últimos anos? Quantos conceitos deixamos de nomear e, portanto, deixamos de compreender?</p><p>O protagonista Winston Smith tenta resistir — primeiro em segredo, com seu diário proibido, depois buscando aliados. O desfecho é conhecido, mas não menos devastador. Não é spoiler dizer que ele é derrotado; o que importa é <strong>como</strong>.</p><hr><p>Classificação pessoal: <strong>4/5</strong> — Essencial, mas perturbador. Perde uma estrela porque a leitura é emocionalmente pesada e exige pausas.</p>"
   },
   {
-    "titulo": "Montando meu primeiro servidor caseiro",
-    "data": "2026-05-28",
-    "resumo": "Comprei um Raspberry Pi 3B e instalei o CasaOS. Agora tenho meu próprio servidor rodando em casa 24/7.",
-    "tags": ["raspberry", "servidor", "casaos"],
-    "imagem": ""
+    "titulo": "O Pequeno Príncipe — Antoine de Saint-Exupéry",
+    "data": "2026-05-10",
+    "tags": ["resenha", "infantojuvenil", "filosofia"],
+    "capa": "📕",
+    "autor": "Antoine de Saint-Exupéry",
+    "nota": "★★★★★",
+    "corpo": "<p>Já perdi a conta de quantas vezes li <em>O Pequeno Príncipe</em>. Cada leitura revela uma camada diferente, como se o livro crescesse junto com o leitor. Quando criança, é uma história sobre um menino de outro planeta. Quando adulto, é um tratado sobre o que perdemos ao crescer.</p><p>Saint-Exupéry escreveu este livro em 1943, durante a Segunda Guerra Mundial, enquanto estava exilado nos Estados Unidos. Talvez por isso haja tanta saudade em suas páginas — saudade de um mundo mais simples, de relações mais verdadeiras, de um tempo em que as pessoas cultivavam laços em vez de colecionar números.</p><blockquote>\"Foi o tempo que dedicaste à tua rosa que a tornou tão importante.\"</blockquote><p>Os personagens que o principezinho encontra em sua jornada são caricaturas tristes da vida adulta: o rei que manda em nada, o vaidoso que só quer ser admirado, o bêbado que bebe para esquecer que bebe, o acendedor de lampiões que segue ordens sem sentido. Cada um é uma pergunta silenciosa: <strong>é isso que nos tornamos?</strong></p><p>O encontro com a raposa é, para mim, o coração do livro. É lá que aprendemos sobre cativar, sobre criar laços, sobre ser responsável por aquilo que cativamos. É uma das passagens mais belas de toda a literatura.</p><hr><p>Classificação pessoal: <strong>5/5</strong> — Não é um livro infantil. É um livro sobre a infância. Leia, releia, chore, e depois leia de novo.</p>"
   }
 ]

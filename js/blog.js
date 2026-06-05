@@ -1,54 +1,73 @@
-// ===== CARREGAR POSTS DO BLOG =====
-
-// async = função para aguardar funções demoradas
-async function carregarPosts() {
+(async function() {
   const container = document.getElementById("lista-posts");
+  const filtroContainer = document.getElementById("filtro-tags");
+  const homeRepoCount = document.getElementById("repo-count");
+  const homePostCount = document.getElementById("post-count");
+
+  if (!container) return;
 
   try {
-    // fetch = buscar um arquivo (no caso, o posts.json)
-    // await = espera a resposta chegar
     const resposta = await fetch("data/posts.json");
-
-    if (!resposta.ok) {
-      throw new Error("Erro ao carregar posts");
-    }
-
-    // .json() = converte a resposta pra array/dicionário Python (objeto JS)
+    if (!resposta.ok) throw new Error("Erro ao carregar");
     const posts = await resposta.json();
 
-    // Se não tem posts
     if (posts.length === 0) {
-      container.innerHTML = "<p>Nenhum post publicado ainda.</p>";
+      container.innerHTML = "<p class='carregando'>Nenhum texto publicado ainda.</p>";
       return;
     }
 
-    // Montar o HTML de cada post
-    // map = transforma cada item da lista em HTML
-    // join("") = junta tudo numa string só
-    const htmlPosts = posts.map(post => {
-      // Criar as tags HTML
-      const tagsHtml = post.tags
-        .map(tag => `<span class="tag">${tag}</span>`)
-        .join("");
+    const todasTags = ["todas", ...new Set(posts.flatMap(p => p.tags))];
+    const botoesExistentes = filtroContainer.querySelectorAll("button");
+    if (botoesExistentes.length <= 1) {
+      todasTags.slice(1).forEach(tag => {
+        const btn = document.createElement("button");
+        btn.textContent = tag;
+        btn.dataset.filtro = tag;
+        filtroContainer.appendChild(btn);
+      });
+    }
 
-      return `
-        <article class="post">
-          <h2>${post.titulo}</h2>
-          <p class="post-data">${post.data}</p>
-          <p class="post-resumo">${post.resumo}</p>
-          ${post.imagem ? `<img src="${post.imagem}" alt="${post.titulo}">` : ""}
-          <div class="post-tags">${tagsHtml}</div>
-        </article>
-      `;
-    }).join("");
+    function renderizar(filtro) {
+      const filtrados = filtro === "todas"
+        ? posts
+        : posts.filter(p => p.tags.includes(filtro));
 
-    container.innerHTML = htmlPosts;
+      container.innerHTML = filtrados.map(post => {
+        const tagsHtml = post.tags.map(t => `<span class="tag">${t}</span>`).join("");
+        return `
+          <article class="post-completo">
+            <div class="post-livro">
+              <div class="post-livro-capa">${post.capa || "📖"}</div>
+              <div class="post-livro-info">
+                <h3>${post.autor || ""}</h3>
+                <div class="autor">${post.nota || ""}</div>
+                <div class="nota"></div>
+              </div>
+            </div>
+            <h2>${post.titulo}</h2>
+            <p class="post-data">${post.data}</p>
+            <div class="post-tags">${tagsHtml}</div>
+            <div class="post-corpo">${post.corpo || post.resumo || ""}</div>
+          </article>
+        `;
+      }).join("");
+
+      filtroContainer.querySelectorAll("button").forEach(b => {
+        b.classList.toggle("ativo", b.dataset.filtro === filtro);
+      });
+    }
+
+    filtroContainer.addEventListener("click", function(e) {
+      if (e.target.tagName === "BUTTON") {
+        renderizar(e.target.dataset.filtro);
+      }
+    });
+
+    renderizar("todas");
+
+    if (homePostCount) homePostCount.textContent = posts.length;
 
   } catch (erro) {
-    // Se algo der errado (arquivo não existe, etc.)
-    container.innerHTML = `<p>❌ Erro ao carregar os posts: ${erro.message}</p>`;
+    container.innerHTML = `<p class='carregando'>Erro ao carregar textos.</p>`;
   }
-}
-
-// Executar quando a página carregar
-carregarPosts();
+})();

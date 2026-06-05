@@ -1,35 +1,44 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blog — A Place of My Own</title>
-  <link rel="stylesheet" href="css/style.css?v=3">
+  <title>Textos — A Place of My Own</title>
+  <script src="js/cache-buster.js"></script>
 </head>
 <body>
 
   <header>
     <div class="container header-flex">
-      <a href="index.html" class="logo">A Place of My Own</a>
-      <button id="toggle-tema" aria-label="Alternar tema">🌙</button>
+      <a href="index.html" class="logo">a-place-of-my-own</a>
       <nav>
         <ul class="menu">
-          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html">Overview</a></li>
           <li><a href="blog.html" class="ativo">Blog</a></li>
           <li><a href="projetos.html">Projetos</a></li>
           <li><a href="sobre.html">Sobre</a></li>
         </ul>
       </nav>
+      <button id="toggle-tema" aria-label="Alternar tema">☀️</button>
     </div>
   </header>
 
   <main>
-    <section class="pagina">
+    <section class="pagina-blog">
       <div class="container">
-        <h1>Blog</h1>
-        <p class="subtitulo">Textos, reflexões e histórias que quero guardar.</p>
+        <div class="blog-header">
+          <h1>Textos</h1>
+          <p class="subtitulo">
+            Resenhas de livros, reflexões e escritos. Um acervo literário pessoal.
+          </p>
+        </div>
+
+        <div class="blog-filtro" id="filtro-tags">
+          <button class="ativo" data-filtro="todas">Todas</button>
+        </div>
+
         <div id="lista-posts">
-          <p class="carregando">Carregando posts...</p>
+          <p class="carregando">Carregando textos...</p>
         </div>
       </div>
     </section>
@@ -37,7 +46,7 @@
 
   <footer>
     <div class="container">
-      <p>&copy; 2026 — Feito com 💜 por mim</p>
+      <p>&copy; 2026 — a-place-of-my-own</p>
     </div>
   </footer>
 

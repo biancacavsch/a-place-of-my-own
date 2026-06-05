@@ -1,41 +1,96 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projetos — A Place of My Own</title>
-  <link rel="stylesheet" href="css/style.css?v=3">
+  <script src="js/cache-buster.js"></script>
 </head>
 <body>
 
   <header>
     <div class="container header-flex">
-      <a href="index.html" class="logo">A Place of My Own</a>
-      <button id="toggle-tema" aria-label="Alternar tema">🌙</button>
+      <a href="index.html" class="logo">a-place-of-my-own</a>
       <nav>
         <ul class="menu">
-          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html">Overview</a></li>
           <li><a href="blog.html">Blog</a></li>
           <li><a href="projetos.html" class="ativo">Projetos</a></li>
           <li><a href="sobre.html">Sobre</a></li>
         </ul>
       </nav>
+      <button id="toggle-tema" aria-label="Alternar tema">☀️</button>
     </div>
   </header>
 
   <main>
-    <section class="pagina">
+    <section class="repo-list">
       <div class="container">
-        <h1>Projetos</h1>
-        <p class="subtitulo">Coisas que eu fiz, estou fazendo ou quero fazer.</p>
+        <div class="repo-list-header">
+          <h2>Repositórios</h2>
+          <input type="text" class="repo-search" id="filtro-repos" placeholder="Buscar repositório...">
+        </div>
 
-        <div class="cards">
-          <div class="card card-projeto">
-            <h3>🖥️ Este Site</h3>
-            <p>Meu site pessoal feito do zero com HTML, CSS e JavaScript puro. Hospedado no meu Raspberry Pi com Nginx.</p>
-            <span class="tag">HTML</span>
-            <span class="tag">CSS</span>
-            <span class="tag">JS</span>
+        <div class="repo-grid" id="lista-projetos">
+          <div class="repo-card">
+            <div class="repo-card-top">
+              <span class="repo-icone">📘</span>
+              <h3><a href="https://github.com/biancacavsch/a-place-of-my-own" target="_blank">a-place-of-my-own</a></h3>
+            </div>
+            <p class="repo-desc">
+              Site pessoal feito do zero com HTML, CSS e JavaScript puro.
+              Hospedado no Raspberry Pi 3B com Nginx e CasaOS.
+            </p>
+            <div class="repo-meta">
+              <span class="repo-linguagem">HTML</span>
+              <span>⭐ privado</span>
+              <span>🍴 fork</span>
+            </div>
+          </div>
+
+          <div class="repo-card">
+            <div class="repo-card-top">
+              <span class="repo-icone">🐍</span>
+              <h3>aprendendo-python</h3>
+            </div>
+            <p class="repo-desc">
+              Exercícios, anotações e pequenos projetos enquanto aprendo
+              lógica de programação e Python.
+            </p>
+            <div class="repo-meta">
+              <span class="repo-linguagem">Python</span>
+              <span>🌱 em andamento</span>
+            </div>
+          </div>
+
+          <div class="repo-card">
+            <div class="repo-card-top">
+              <span class="repo-icone">📗</span>
+              <h3>resenhas-literarias</h3>
+            </div>
+            <p class="repo-desc">
+              Acervo de resenhas de livros organizadas por autor, gênero
+              e data de leitura.
+            </p>
+            <div class="repo-meta">
+              <span class="repo-linguagem">Texto</span>
+              <span>📝 3 resenhas</span>
+            </div>
+          </div>
+
+          <div class="repo-card">
+            <div class="repo-card-top">
+              <span class="repo-icone">📕</span>
+              <h3>config-raspberry</h3>
+            </div>
+            <p class="repo-desc">
+              Anotações e scripts de configuração do Raspberry Pi 3B,
+              incluindo Nginx, CasaOS e rede local.
+            </p>
+            <div class="repo-meta">
+              <span class="repo-linguagem">Shell</span>
+              <span>🔧 config</span>
+            </div>
           </div>
         </div>
       </div>
@@ -44,9 +99,19 @@
 
   <footer>
     <div class="container">
-      <p>&copy; 2026 — Feito com 💜 por mim</p>
+      <p>&copy; 2026 — a-place-of-my-own</p>
     </div>
   </footer>
+
+  <script>
+    document.getElementById("filtro-repos")?.addEventListener("input", function() {
+      const termo = this.value.toLowerCase();
+      document.querySelectorAll("#lista-projetos .repo-card").forEach(card => {
+        const titulo = card.querySelector("h3")?.textContent?.toLowerCase() || "";
+        card.style.display = titulo.includes(termo) ? "" : "none";
+      });
+    });
+  </script>
 
   <script src="js/main.js"></script>
 </body>

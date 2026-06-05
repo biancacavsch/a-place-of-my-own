@@ -1,66 +1,120 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>A Place of My Own</title>
-  <link rel="stylesheet" href="css/style.css?v=3">
+  <script src="js/cache-buster.js"></script>
 </head>
 <body>
 
   <header>
     <div class="container header-flex">
-      <a href="index.html" class="logo">A Place of My Own</a>
-      <button id="toggle-tema" aria-label="Alternar tema">🌙</button>
+      <a href="index.html" class="logo">a-place-of-my-own</a>
       <nav>
         <ul class="menu">
-          <li><a href="index.html" class="ativo">Home</a></li>
+          <li><a href="index.html" class="ativo">Overview</a></li>
           <li><a href="blog.html">Blog</a></li>
           <li><a href="projetos.html">Projetos</a></li>
           <li><a href="sobre.html">Sobre</a></li>
         </ul>
       </nav>
+      <button id="toggle-tema" aria-label="Alternar tema">☀️</button>
     </div>
   </header>
 
   <main>
-    <section class="hero">
-      <div class="container">
-        <h1>Acervo pessoal</h1>
-        <p>
-           Aqui compartilho ideias, projetos, e tudo mais que me interessa.
-        </p>
-        <a href="sobre.html" class="btn">Mais sobre</a>
+    <section class="perfil">
+      <div class="container perfil-flex">
+        <div class="perfil-avatar">📖</div>
+        <div class="perfil-info">
+          <h1>Bianca</h1>
+          <div class="handle">@biancacavsch</div>
+          <p class="bio">
+            Este é o meu repositório pessoal. Aqui guardo projetos, resenhas de livros,
+            textos e tudo que faz parte do que estou aprendendo e criando.
+          </p>
+          <div class="perfil-stats">
+            <span><strong id="repo-count">0</strong> projetos</span>
+            <span><strong id="post-count">0</strong> textos</span>
+            <span><strong>1</strong> servidor</span>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="destaques fade-in">
+    <nav class="aba-nav">
+      <div class="container" style="display:flex;">
+        <a href="index.html" class="ativo">📋 Overview</a>
+        <a href="projetos.html">📂 Repositórios</a>
+        <a href="blog.html">📝 Textos</a>
+      </div>
+    </nav>
+
+    <section class="repo-list">
       <div class="container">
-        <h2>Destaques</h2>
-        <div class="cards">
-          <div class="card fade-in">
-            <h3>📝 Blog</h3>
-            <p>Textos</p>
-            <a href="blog.html" class="btn btn-pequeno">Ver posts</a>
+        <div class="repo-list-header">
+          <h2>Projetos em destaque</h2>
+        </div>
+        <div class="repo-grid" id="home-repos">
+          <div class="repo-card">
+            <div class="repo-card-top">
+              <span class="repo-icone">📘</span>
+              <h3><a href="projetos.html">este-site</a></h3>
+            </div>
+            <p class="repo-desc">
+              Meu site pessoal construído do zero com HTML, CSS e JavaScript.
+              Servido no Raspberry Pi via Nginx.
+            </p>
+            <div class="repo-meta">
+              <span class="repo-linguagem">HTML</span>
+              <span>🔄 atualizado há dias</span>
+            </div>
           </div>
-          <div class="card fade-in">
-            <h3>💻 Projetos</h3>
-            <p>Coisas que construí, estou construindo ou pretendo construir.</p>
-            <a href="projetos.html" class="btn btn-pequeno">Ver projetos</a>
+
+          <div class="repo-card">
+            <div class="repo-card-top">
+              <span class="repo-icone">📗</span>
+              <h3><a href="blog.html">resenhas-literarias</a></h3>
+            </div>
+            <p class="repo-desc">
+              Resenhas e análises de livros que li. Um acervo literário
+              pessoal organizado por autor e gênero.
+            </p>
+            <div class="repo-meta">
+              <span class="repo-linguagem">Texto</span>
+              <span>📝 3 resenhas</span>
+            </div>
           </div>
-          <div class="card fade-in">
-            <h3>🌱 Sobre</h3>
-            <p>Quem sou eu e para que uso esse espaço.</p>
-            <a href="sobre.html" class="btn btn-pequeno">Saber mais</a>
+
+          <div class="repo-card">
+            <div class="repo-card-top">
+              <span class="repo-icone">📕</span>
+              <h3><a href="sobre.html">aprendendo-programacao</a></h3>
+            </div>
+            <p class="repo-desc">
+              Minha jornada aprendendo programação do zero. Códigos,
+              anotações e projetos de estudo.
+            </p>
+            <div class="repo-meta">
+              <span class="repo-linguagem">Python</span>
+              <span>🌱 em andamento</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="fade-in">
+  <script>
+    fetch("data/posts.json").then(r => r.json()).then(p => {
+      document.getElementById("post-count").textContent = p.length;
+    }).catch(() => {});
+  </script>
+
+  <footer>
     <div class="container">
-      <p>&copy; 2026 — Feito para aprender sobre front-end</p>
+      <p>&copy; 2026 — a-place-of-my-own</p>
     </div>
   </footer>
 
