@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Serviços — A Place of My Own</title>
+  <script src="js/cache-buster.js"></script>
+</head>
+<body>
+
+  <header>
+    <div class="container header-flex">
+      <a href="index.html" class="logo">a-place-of-my-own</a>
+      <nav>
+        <ul class="menu">
+          <li><a href="index.html">Overview</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="projetos.html">Projetos</a></li>
+          <li><a href="servicos.html" class="ativo">Serviços</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+        </ul>
+      </nav>
+      <button id="toggle-tema" aria-label="Alternar tema">☀️</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="repo-list">
+      <div class="container">
+        <div class="repo-list-header">
+          <h2>Serviços rodando no Pi</h2>
+          <input type="text" class="repo-search" id="filtro-servicos" placeholder="Buscar serviço...">
+        </div>
+        <p class="subtitulo" style="margin-bottom: 24px; opacity: 0.7;">
+          Acessíveis via Tailscale (rede privada) de qualquer lugar do mundo.
+        </p>
+
+        <div class="repo-grid">
+          <div class="repo-card">
+            <div class="repo-card-top">
+              <span class="repo-icone">🌐</span>
+              <h3><a href="http://100.66.151.93:8080" target="_blank">Site pessoal</a></h3>
+            </div>
+            <p class="repo-desc">
+              Este site. Servido via Nginx na porta 8080.
+            </p>
+            <div class="repo-meta">
+              <span class="repo-linguagem">Nginx</span>
+              <span>🔌 8080</span>
+              <span>✅ online</span>
+            </div>
+          </div>
+
+          <div class="repo-card">
+            <div class="repo-card-top">
+              <span class="repo-icone">📓</span>
+              <h3><a href="http://100.66.151.93:7070" target="_blank">Trilium Notes</a></h3>
+            </div>
+            <p class="repo-desc">
+              Anotações hierárquicas e pessoais. Conhecimento organizado
+              em notas com backlinks e relação entre ideias.
+            </p>
+            <div class="repo-meta">
+              <span class="repo-linguagem">Trilium</span>
+              <span>🔌 7070</span>
+              <span>✅ healthy</span>
+            </div>
+          </div>
+
+          <div class="repo-card">
+            <div class="repo-card-top">
+              <span class="repo-icone">🛡️</span>
+              <h3><a href="http://100.66.151.93:8800/admin/" target="_blank">Pi-hole</a></h3>
+            </div>
+            <p class="repo-desc">
+              DNS sinkhole que bloqueia anúncios e rastreadores em toda
+              a rede local. Painel admin em HTTP.
+            </p>
+            <div class="repo-meta">
+              <span class="repo-linguagem">Pi-hole</span>
+              <span>🔌 8800 HTTP</span>
+              <span>✅ healthy</span>
+            </div>
+          </div>
+
+          <div class="repo-card">
+            <div class="repo-card-top">
+              <span class="repo-icone">🔒</span>
+              <h3><a href="https://100.66.151.93:8443/admin/" target="_blank">Pi-hole (HTTPS)</a></h3>
+            </div>
+            <p class="repo-desc">
+              Painel do Pi-hole via HTTPS (certificado autoassinado —
+              o navegador vai avisar, é seguro continuar).
+            </p>
+            <div class="repo-meta">
+              <span class="repo-linguagem">Pi-hole</span>
+              <span>🔌 8443 HTTPS</span>
+              <span>✅ healthy</span>
+            </div>
+          </div>
+
+          <div class="repo-card">
+            <div class="repo-card-top">
+              <span class="repo-icone">📡</span>
+              <h3><a href="http://100.66.151.93:4999" target="_blank">Port Tracker</a></h3>
+            </div>
+            <p class="repo-desc">
+              Rastreamento de portas — monitora quais portas estão
+              abertas no Pi.
+            </p>
+            <div class="repo-meta">
+              <span class="repo-linguagem">BigBear</span>
+              <span>🔌 4999</span>
+              <span>✅ healthy</span>
+            </div>
+          </div>
+
+          <div class="repo-card">
+            <div class="repo-card-top">
+              <span class="repo-icone">🏠</span>
+              <h3><a href="http://192.168.11.127" target="_blank">CasaOS</a></h3>
+            </div>
+            <p class="repo-desc">
+              Painel principal do CasaOS — gerencia todos os apps
+              instalados no Raspberry. (Só funciona na rede local.)
+            </p>
+            <div class="repo-meta">
+              <span class="repo-linguagem">CasaOS</span>
+              <span>🔌 80</span>
+              <span>🏠 só LAN</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 32px; padding: 20px; background: var(--cor-card); border: 1px solid var(--cor-borda); border-radius: 8px; font-size: 0.9rem; opacity: 0.85;">
+          <strong>ℹ️ Como acessar de fora:</strong> Instale o Tailscale no seu device
+          (<a href="https://tailscale.com/download" target="_blank">download aqui</a>)
+          e faça login com a mesma conta. Depois é só clicar nos links acima.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 — a-place-of-my-own</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    document.getElementById("filtro-servicos")?.addEventListener("input", function() {
+      const termo = this.value.toLowerCase();
+      document.querySelectorAll(".repo-grid .repo-card").forEach(card => {
+        const titulo = card.querySelector("h3")?.textContent?.toLowerCase() || "";
+        const desc = card.querySelector(".repo-desc")?.textContent?.toLowerCase() || "";
+        card.style.display = (titulo + " " + desc).includes(termo) ? "" : "none";
+      });
+    });
+  </script>
+</body>
+</html>

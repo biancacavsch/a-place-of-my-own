@@ -1,12 +1,23 @@
 # Acesso ao site via Tailscale
 
-O site roda no Raspberry Pi (rede local em `http://192.168.11.127:8080`) e também é acessível de qualquer lugar via Tailscale.
+O site roda no Raspberry Pi e é acessível de qualquer lugar via Tailscale (rede privada).
 
-## URL de acesso via Tailscale
+## Endereço Tailscale do Pi
 
-**http://100.66.151.93:8080**
+**100.66.151.93**
 
-Funciona em qualquer rede do mundo, desde que o device esteja logado no Tailscale com a mesma conta.
+## Serviços disponíveis via Tailscale
+
+| Serviço | URL | Descrição |
+|---|---|---|
+| 🌐 Site pessoal | http://100.66.151.93:8080 | Este site (Nginx) |
+| 📓 Trilium Notes | http://100.66.151.93:7070 | Anotações hierárquicas pessoais |
+| 🛡️ Pi-hole (HTTP) | http://100.66.151.93:8800/admin/ | Painel admin do bloqueador de ads |
+| 🔒 Pi-hole (HTTPS) | https://100.66.151.93:8443/admin/ | Painel admin via HTTPS (cert autoassinado) |
+| 📡 Port Tracker | http://100.66.151.93:4999 | Monitor de portas abertas |
+| 🏠 CasaOS | http://192.168.11.127 | Painel do CasaOS (só LAN) |
+
+Você também pode ver esses links na página `/servicos.html` do site.
 
 ## O que é o Tailscale
 
@@ -26,7 +37,7 @@ Vantagens:
    - **Android:** https://play.google.com/store/apps/details?id=com.tailscale.ipn
    - **Mac/Windows/Linux:** https://tailscale.com/download
 2. Faça login com a **mesma conta** que usou no Pi
-3. Acesse `http://100.66.151.93:8080` no navegador
+3. Acesse qualquer um dos links acima no navegador
 
 ## Comandos úteis no Pi
 
@@ -47,12 +58,27 @@ sudo systemctl restart tailscaled
 sudo tailscale logout
 ```
 
-## Se o site não responder via Tailscale
+## Containers no Pi (referência)
 
-1. Verifique se o Nginx está rodando: `sudo systemctl status nginx`
-2. Verifique se o Tailscale está logado: `sudo tailscale status`
-3. Verifique conectividade: `sudo tailscale ping` em outro device
-4. Reinicie o Tailscale: `sudo systemctl restart tailscaled`
+```bash
+# Ver containers rodando
+docker ps
+
+# Ver logs de um container
+docker logs -f trilium
+docker logs -f pihole
+
+# Reiniciar um container
+docker restart trilium
+docker restart pihole
+```
+
+## Se algum serviço não responder
+
+1. **Nginx:** `sudo systemctl status nginx` — reiniciar com `sudo systemctl restart nginx`
+2. **Tailscale:** `sudo tailscale status` — reiniciar com `sudo systemctl restart tailscaled`
+3. **Container Docker:** `docker restart <nome>` (ex: `docker restart trilium`)
+4. **Site fora do ar:** `cd /var/www/a-place-of-my-own && sudo git pull`
 
 ## Sobre domínio público (futuro)
 
