@@ -146,6 +146,26 @@ Suite completa de testes via Tailscale executada em 05/06/2026:
 
 **Status: arquitetura 100% funcional.**
 
+## Testes com listas expandidas (05/06/2026)
+
+Após adicionar mais adlists, segunda suite de testes:
+
+### Bloqueios confirmados
+- ✅ **Google Ads (6/6):** doubleclick, googleadservices, googlesyndication, google-analytics, googletagmanager, googleads.g.doubleclick
+- ✅ **Meta/Facebook (5/5):** facebook.com, connect.facebook.net, graph.facebook.com, pixel.facebook.com, fbcdn.net
+- ✅ **Ad Networks (7/7):** adnxs, pubmatic, scorecardresearch, moatads, criteo, taboola, outbrain
+- ✅ **Trackers diversos (7/7):** hotjar, mixpanel, segment.io, amplitude, appsflyer, branch.io, kochava
+- ✅ **Trackers adicionais (5/5):** clarity.ms, crazyegg, optimizely, mouseflow, fullstory
+- ✅ **Twitter Ads (3/4):** analytics/ads-twitter/syndication bloqueados (twitter.com mantém — necessário)
+
+### Sites legítimos funcionam (sem falsos positivos)
+- ✅ github.com, wikipedia.org, cloudflare.com, debian.org
+- ✅ youtube.com, googlevideo.com, ytimg.com, gstatic.com
+- ✅ instagram.com, whatsapp.com, telegram.org, tiktok.com
+- ✅ uol.com.br, terra.com.br, g1.globo.com, folha.uol.com.br
+
+**Status final: 🟢 EXCELENTE — bloqueios amplos sem quebrar sites importantes.**
+
 ## Sobre domínio público (futuro)
 
 Quando quiser expor o site publicamente (compartilhar com outras pessoas), as opções são:
