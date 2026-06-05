@@ -1,2 +1,3 @@
 # Arquivos de configuração local (contém IPs, senhas, etc)
 nginx/site.conf
+firewall/.env
