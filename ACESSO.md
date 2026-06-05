@@ -19,6 +19,35 @@ O site roda no Raspberry Pi e é acessível de qualquer lugar via Tailscale (red
 
 Você também pode ver esses links na página `/servicos.html` do site.
 
+## Arquitetura de DNS (Pi-hole + Unbound + Tailscale)
+
+```
+Seu device (qualquer rede do mundo)
+    ↓
+[Tailscale VPN → 100.66.151.93]
+    ↓
+Pi-hole (filtra, bloqueia ads/rastreadores)
+    ↓
+Unbound (resolver DNS recursivo, valida DNSSEC)
+    ↓
+Root servers (internet DNS)
+```
+
+### O que isso te dá
+
+- **Bloqueio de ads em qualquer rede**: 4G, WiFi público, hotel
+- **Privacidade total**: nenhuma consulta DNS passa por Google/Cloudflare
+- **DNSSEC validation**: garante que as respostas DNS não foram falsificadas
+- **Performance**: cache local, queries mais rápidas
+- **Resiliência**: se Tailscale cair, ainda funciona em casa
+
+### Para ativar essa proteção nos seus devices
+
+1. Acesse https://login.tailscale.com/admin/dns
+2. Em **"Nameservers"**, adicione `100.66.151.93`
+3. Salve
+4. Pronto — todo o tráfego DNS do device passa pelo Pi-hole
+
 ## O que é o Tailscale
 
 Tailscale cria uma **rede privada (mesh VPN)** entre seus dispositivos usando WireGuard. É grátis para uso pessoal (até 100 devices, 1 usuário).
@@ -56,6 +85,14 @@ sudo systemctl restart tailscaled
 
 # Deslogar
 sudo tailscale logout
+
+# Testar DNS
+dig pi-hole.net @127.0.0.1
+dig doubleclick.net @127.0.0.1    # deve retornar 0.0.0.0
+
+# Unbound
+sudo systemctl status unbound
+dig internetsociety.org @127.0.0.1 -p 5335 +dnssec
 ```
 
 ## Containers no Pi (referência)
@@ -71,6 +108,10 @@ docker logs -f pihole
 # Reiniciar um container
 docker restart trilium
 docker restart pihole
+
+# Editar config DNS do Pi-hole
+docker exec pihole bash -c 'cat /etc/pihole/setupVars.conf | grep PIHOLE_DNS'
+docker exec pihole pihole reloaddns
 ```
 
 ## Se algum serviço não responder
@@ -79,6 +120,7 @@ docker restart pihole
 2. **Tailscale:** `sudo tailscale status` — reiniciar com `sudo systemctl restart tailscaled`
 3. **Container Docker:** `docker restart <nome>` (ex: `docker restart trilium`)
 4. **Site fora do ar:** `cd /var/www/a-place-of-my-own && sudo git pull`
+5. **DNS quebrado:** `sudo systemctl restart unbound && docker exec pihole pihole reloaddns`
 
 ## Sobre domínio público (futuro)
 
