@@ -1,2 +1,5 @@
 # Arquivos de configuração local (contém IPs, senhas, etc)
 nginx/site.conf
+
+# Arquivos gerados por build.py
+data/posts.json

@@ -17,6 +17,9 @@ fi
 
 set -e  # para o script se qualquer comando falhar
 
+echo "🔨 Buildando posts..."
+python3 build.py
+
 echo "📦 Enviando para o GitHub..."
 git add -A
 git commit -m "$1" || echo "(nada para commitar)"
